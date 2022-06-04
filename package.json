@@ -4,7 +4,7 @@
 	"description": "Web Project Setup Package",
 	"main": "main_html.js",
 	"scripts": {
-		"start": "node index_lab2.js",
+		"start": "node serverExpress.js",
 		"test": "Testing"
 	},
 	"repository": {

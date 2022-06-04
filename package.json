@@ -1,20 +1,23 @@
 {
-  "name": "project",
-  "version": "1.0.0",
-  "description": "Web Project Setup Package",
-  "main": "main_html.js",
-  "scripts": {
-	"start": "node index.js",
-    "test": "Testing"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DiscordianWeb/Project.git"
-  },
-  "author": "Eris",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/DiscordianWeb/Project/issues"
-  },
-  "homepage": "https://github.com/DiscordianWeb/Project#readme"
+	"name": "project",
+	"version": "1.0.0",
+	"description": "Web Project Setup Package",
+	"main": "main_html.js",
+	"scripts": {
+		"start": "node index_lab2.js",
+		"test": "Testing"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/DiscordianWeb/Project.git"
+	},
+	"author": "Eris",
+	"dependencies": {
+		"express": "~4.13.4"
+	},
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/DiscordianWeb/Project/issues"
+	},
+	"homepage": "https://github.com/DiscordianWeb/Project#readme"
 }

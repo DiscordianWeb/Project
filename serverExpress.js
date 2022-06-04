@@ -21,7 +21,9 @@ var adminRouter = express.Router();
 adminRouter.get('/', function(req, res) {
 res.send('I am the dashboard!'); });
 
-// ~~~~~~~~~~ MIDDLEWARE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+// ~~~~~~~~~~ MIDDLEWARE: Logging ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // route middleware that will happen on every request
 adminRouter.use(function(req, res, next) {
 	
@@ -32,25 +34,46 @@ console.log(req.method, req.url);
 next(); });
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
+
 // users page (http://localhost:PORT/admin/users)
 adminRouter.get('/users', function(req, res) {
 res.send('I show all the users!'); });
+
+
 
 // posts page (http://localhost:PORT/admin/posts)
 adminRouter.get('/posts', function(req, res) {
 res.send('I show all the posts!'); });
 
-// route with parameters (http://localhost:PORT/admin/users/:name)
+
+
+// route with parameters (http://localhost:PORT/admin/users/:name) ##############
 adminRouter.get('/users/:name', function(req, res) {
 res.send('hello ' + req.params.name + '!'); });
+
+// route middleware to validate :name ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+adminRouter.param('name', function(req, res, next, name) {
+	
+// do validation on name here
+// log something so we know its working
+console.log('doing name validations on ' + name);
+
+// once validation is done save the new item in the req
+req.name = name;
+
+// go to the next thing
+next();
+});
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ##############################################################################
+
+
 
 // apply the routes to our application
 app.use('/admin', adminRouter);
 
 // #######################################################################################
-
-
-
 
 
 // start the server

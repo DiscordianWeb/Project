@@ -10,7 +10,7 @@ http.createServer(function (request, response) {
 		'Content-Type': 'text/plain',
 		'Access-Control-Allow-Origin' : '*'
 		});
-		var readStream = fs.createReadStream( + 'index.html');
+		var readStream = fs.createReadStream('index.html');
 	
 	// Send the response body as "Hello World"
 	readStream.pipe(response);

@@ -7,8 +7,6 @@ const PORT = process.env.PORT || 8080;
 var port = PORT;
 
 
-});
-
 
 // ########## LOGIN ROUTE ###############################################################
 app.route('/login')
@@ -26,11 +24,14 @@ app.route('/login')
 res.send('processing the login form!');
 });
 
+// ######################################################################################
+
+
+
 // send our index.html file to the user for the home page
 app.get('/', function(req, res) {
 res.sendFile(__dirname + '/index.html');
-
-// ######################################################################################
+});
 
 
 

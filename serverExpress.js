@@ -16,7 +16,7 @@ app.route('/login')
 	var input1 = req.query['input1'];
 	var input2 = req.query['input2'];
 	console.log('The Params' + req.query.input1 + " " + req.query.input2);
-	}
+	
 })
 
 // process the form (POST http://localhost:PORT/login)

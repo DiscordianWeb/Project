@@ -20,23 +20,26 @@ app.route('/login')
 		var input1 = req.query['input1'];
 		var input2 = req.query['input2'];
 		if (typeof input1 != 'undefined' && typeof input2 != 'undefined') {
-        output+=('There was input: ' + input1 + ' and ' + input2);
-        res.send(output);
-     }
-     console.log('Start the database stuff');
+			output+=('There was input: ' + input1 + ' and ' + input2);
+			res.send(output);
+		}
+    
+		console.log('Start the database stuff');
 
-     MongoClient.connect(uri, function (err, db) {
-            if(err) throw err;
-            console.log('Start the database stuff');
-            //Write databse Insert/Update/Query code here..
-            var dbo = db.db("mydb");
-            var myobj = { firstInput: input1, secondInput: input2 };
-            dbo.collection("users").insertOne(myobj, function(err, res) {
-              if (err) throw err;
-              console.log("1 user inserted");
-              db.close();
-            });
-            console.log('End the database stuff');
+		MongoClient.connect(uri, function (err, db) {
+			if(err) throw err;
+			console.log('Start the database stuff');
+			
+			//Write databse Insert/Update/Query code here..
+			var dbo = db.db("mydb");
+			var myobj = { firstInput: input1, secondInput: input2 };
+			dbo.collection("users").insertOne(myobj, function(err, res) {
+				if (err) throw err;
+				console.log("1 user inserted");
+				db.close();
+			});
+			
+			console.log('End the database stuff');
 		});
 	})
 

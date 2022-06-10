@@ -1,7 +1,12 @@
 // load the express package and create our app
 var express = require('express');
 var app = express();
+
 const PORT = process.env.PORT || 8080;
+const DBURI = process.env.DBURI || "mongodb://127.0.0.1:27017"
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = DBURI;
 
 // set the port based on environment (more on environments later)
 var port = PORT;
@@ -15,9 +20,24 @@ app.route('/login')
 		var input1 = req.query['input1'];
 		var input2 = req.query['input2'];
 		if (typeof input1 != 'undefined' && typeof input2 != 'undefined') {
-			output+=('There was input: ' + input1 + ' and ' + input2);
-			console.log(output);
-		 }
+        output+=('There was input: ' + input1 + ' and ' + input2);
+        res.send(output);
+     }
+     console.log('Start the database stuff');
+
+     MongoClient.connect(uri, function (err, db) {
+            if(err) throw err;
+            console.log('Start the database stuff');
+            //Write databse Insert/Update/Query code here..
+            var dbo = db.db("mydb");
+            var myobj = { firstInput: input1, secondInput: input2 };
+            dbo.collection("users").insertOne(myobj, function(err, res) {
+              if (err) throw err;
+              console.log("1 user inserted");
+              db.close();
+            });
+            console.log('End the database stuff');
+		});
 	})
 
 // process the form (POST http://localhost:PORT/login)

@@ -6,8 +6,6 @@ const PORT = process.env.PORT || 8080;
 // set the port based on environment (more on environments later)
 var port = PORT;
 
-
-
 // ########## LOGIN ROUTE ###############################################################
 app.route('/login')
 // show the form (GET http://localhost:PORT/login)
@@ -16,7 +14,6 @@ app.route('/login')
 	var input1 = req.query['input1'];
 	var input2 = req.query['input2'];
 	console.log('The Params' + req.query.input1 + " " + req.query.input2);
-	
 })
 
 // process the form (POST http://localhost:PORT/login)

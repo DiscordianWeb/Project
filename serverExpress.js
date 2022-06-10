@@ -10,7 +10,7 @@ var port = PORT;
 app.route('/login')
 
 	// show the form (GET http://localhost:PORT/login)
-	.get(function(req, res) {
+	.get(function(req, res) { 
 		var output = 'getting the login! ';
 		var input1 = req.query['input1'];
 		var input2 = req.query['input2'];
@@ -31,7 +31,7 @@ res.send('processing the login form!');
 
 // send our index.html file to the user for the home page
 app.get('/', function(req, res) {
-	res.sendFile(__dirname + '/index.html');
+	res.sendFile(__dirname + '/login.html');
 });
 
 
